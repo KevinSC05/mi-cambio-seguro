@@ -1,0 +1,81 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasas de Cambio</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo"><img src="img/logo.png" alt="Logo" /> <span>Mi Cambio Seguro</span></div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="tasas.html" class="active">Tasas</a></li>
+          <li><a href="ubicacion.html">Ubicación</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content container">
+    <h1 class="animate-slide-in">Tasas de Cambio</h1>
+    <table class="table animate-slide-in">
+      <thead>
+        <tr>
+          <th>Moneda</th>
+          <th>Compra</th>
+          <th>Venta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>USD</td><td>$3.800</td><td>$3.850</td></tr>
+        <tr><td>EUR</td><td>$4.100</td><td>$4.180</td></tr>
+        <tr><td>GBP</td><td>$4.800</td><td>$4.900</td></tr>
+      </tbody>
+    </table>
+
+    <section class="calculator animate-slide-in">
+      <h2>Calculadora de divisas</h2>
+      <form id="calcForm">
+        <label for="amount">Cantidad en COP:</label>
+        <input type="number" id="amount" placeholder="Ej. 100000" required>
+
+        <label for="currency">Convertir a:</label>
+        <select id="currency">
+          <option value="usd">Dólar</option>
+          <option value="eur">Euro</option>
+          <option value="gbp">Libra</option>
+        </select>
+
+        <button type="submit" class="btn-primary">Convertir</button>
+      </form>
+      <p id="result"></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Mi Cambio Seguro</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('calcForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const amount = parseFloat(document.getElementById('amount').value);
+      const currency = document.getElementById('currency').value;
+      let rate = 0;
+      switch (currency) {
+        case 'usd': rate = 3850; break;
+        case 'eur': rate = 4180; break;
+        case 'gbp': rate = 4900; break;
+      }
+      const result = amount / rate;
+      document.getElementById('result').textContent = `Resultado: ${result.toFixed(2)} ${currency.toUpperCase()}`;
+    });
+  </script>
+</body>
+</html>
